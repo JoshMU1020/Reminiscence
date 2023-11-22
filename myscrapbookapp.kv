@@ -1,0 +1,44 @@
+<WelcomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Create Account'
+            on_press: root.manager.current = 'CreateAccountPopup@Popup'
+        TextInput:
+            id: username_input
+            hint_text: 'Enter username'
+        TextInput:
+            id: password_input
+            password: True
+            hint_text: 'Enter password'
+        Button:
+            text: 'Login'
+            on_press: root.manager.current = 'mainMenu'  # Change to 'mainMenu' if credentials are correct
+
+<CreateAccountPopup@Popup>:
+    title: 'Create Account'
+    size_hint: None, None
+    size: 400, 400
+    BoxLayout:
+        orientation: 'vertical'
+        TextInput:
+            hint_text: 'New username'
+        TextInput:
+            password: True
+            hint_text: 'New password'
+        Button:
+            text: 'Create'
+            on_press: root.dismiss()  # Add logic for account creation
+
+<MainMenu>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'View Pages'
+            on_press: root.manager.current = 'pageView'
+        Button:
+            text: 'Create New Page'
+            on_press: root.manager.current = 'templateSelect'
+        # Add other buttons for 'See all images/videos/notes' and 'Logout'
+
+# Define layouts for other screens similarly...
