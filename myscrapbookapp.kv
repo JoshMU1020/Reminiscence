@@ -3,7 +3,7 @@
         orientation: 'vertical'
         Button:
             text: 'Create Account'
-            on_press: root.manager.current = 'CreateAccountPopup@Popup'
+            on_press: app.open_create_account_popup()
         TextInput:
             id: username_input
             hint_text: 'Enter username'
@@ -22,23 +22,116 @@
     BoxLayout:
         orientation: 'vertical'
         TextInput:
+            id: new_username
             hint_text: 'New username'
         TextInput:
+            id: new_password
             password: True
             hint_text: 'New password'
         Button:
             text: 'Create'
-            on_press: root.dismiss()  # Add logic for account creation
+            on_release: app.create_account(new_username.text, new_password.text)
 
 <MainMenu>:
     BoxLayout:
         orientation: 'vertical'
         Button:
             text: 'View Pages'
-            on_press: root.manager.current = 'pageView'
+            on_press: root.manager.current = 'viewPages'
         Button:
             text: 'Create New Page'
             on_press: root.manager.current = 'templateSelect'
-        # Add other buttons for 'See all images/videos/notes' and 'Logout'
+        Button:
+            text: 'View All Images'
+            on_press: root.manager.current = 'dataScrolling'
+        Button:
+            text: 'View All Videos'
+            on_press: root.manager.current = 'dataScrolling'
+        Button:
+            text: 'View All Notes'
+            on_press: root.manager.current = 'dataScrolling'
+        Button:
+            text: 'Logout'
+            on_press: root.manager.current = 'welcome'
 
-# Define layouts for other screens similarly...
+<ViewPages>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Return'
+            on_press: root.manager.current = 'mainMenu'
+
+<TemplateSelect>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Return'
+            on_press: root.manager.current = 'mainMenu'
+        Button:
+            text: 'Template One'
+            on_press: root.manager.current = 'pageCreation'
+        Button:
+            text: 'Template Two'
+            on_press: root.manager.current = 'pageCreation'
+        Button:
+            text: 'Template Three'
+            on_press: root.manager.current = 'pageCreation'
+        Button:
+            text: 'Template Four'
+            on_press: root.manager.current = 'pageCreation'
+
+<PageCreation>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Templates'
+            on_press: root.manager.current = 'templateSelect'
+        Button:
+            text: 'Main Menu'
+            on_press: root.manager.current = 'mainMenu'
+        Button:
+            text: 'Select DataBox'
+            on_press: app.open_place_data_popup()
+
+<PlaceDataPopup@Popup>:
+    title: 'Place Data'
+    size_hint: None, None
+    size: 400, 400
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Image'
+            on_press:
+                root.dismiss()
+                app.switch_to_data_scrolling('image')
+        Button:
+            text: 'Video'
+            on_press:
+                root.dismiss()
+                app.switch_to_data_scrolling('video')
+        Button:
+            text: 'Note'
+            on_press:
+                root.dismiss()
+                app.open_create_note_popup()
+
+<CreateNotePopup@Popup>:
+    title: 'Create note'
+    size_hint: None, None
+    size: 400, 400
+    BoxLayout:
+        orientation: 'vertical'
+        TextInput:
+            id: new_note
+            hint_text: 'Enter note'
+        Button:
+            text: 'Save Note'
+            # Add on_press event to handle note saving
+            on_release: app.save_note(new_note.text)
+
+<DataScrolling>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Return'
+            on_press: root.manager.current = 'mainMenu'

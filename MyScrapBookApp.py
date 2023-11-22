@@ -1,5 +1,6 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.factory import Factory
 
 
 class WelcomeScreen(Screen):
@@ -101,12 +102,40 @@ class MyScrapbookApp(App):
         sm = ScreenManager()
         sm.add_widget(WelcomeScreen(name='welcome'))
         sm.add_widget(MainMenu(name='mainMenu'))
-        sm.add_widget(ViewPages(name='pageView'))
+        sm.add_widget(ViewPages(name='viewPages'))
         sm.add_widget(TemplateSelect(name='templateSelect'))
         sm.add_widget(PageCreation(name='pageCreation'))
         sm.add_widget(DataScrolling(name='dataScrolling'))
         return sm
 
+    def open_create_account_popup(self):
+        self.create_account_popup = Factory.CreateAccountPopup()
+        self.create_account_popup.open()
+
+    def create_account(self, username, password):
+        # Logic to create a new account
+        # Save the username and password to a file or database
+        print("Creating account with...\nUsername:", username, "\nPassword:", password)
+        self.create_account_popup.dismiss()
+
+    def open_place_data_popup(self):
+        self.place_data_popup = Factory.PlaceDataPopup()
+        self.place_data_popup.open()
+
+    def open_create_note_popup(self):
+        self.create_note_popup = Factory.CreateNotePopup()
+        self.create_note_popup.open()
+
+    def save_note(self, note):
+        # Save the note to a file or database
+        print("Saving Note...")
+        print(note)
+        self.create_note_popup.dismiss()
+
+    def switch_to_data_scrolling(self, data_type):
+        # Here, you can add logic to prepare the DataScrolling screen based on the data_type ('image' or 'video')
+        # For instance, setting a property on that screen to indicate what data to display
+        self.root.current = 'dataScrolling'
 
 if __name__ == "__main__":
     MyScrapbookApp().run()
