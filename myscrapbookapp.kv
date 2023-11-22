@@ -1,18 +1,55 @@
 <WelcomeScreen>:
+    canvas.before:
+        Color:
+            rgba: 224/255, 129/255, 78/255, 0.8
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.after:
+        Line:
+            rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
+            width: 5
     BoxLayout:
         orientation: 'vertical'
+        padding: 80
+        spacing: 10
+        Label:
+            text: 'Welcome to Reminiscence!'
+            size_hint_y: None
+            height: '48dp'
+            # Add styling for the title
         Button:
             text: 'Create Account'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: app.open_create_account_popup()
         TextInput:
             id: username_input
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             hint_text: 'Enter username'
         TextInput:
             id: password_input
             password: True
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             hint_text: 'Enter password'
         Button:
             text: 'Login'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'mainMenu'  # Change to 'mainMenu' if credentials are correct
 
 <CreateAccountPopup@Popup>:
@@ -33,64 +70,197 @@
             on_release: app.create_account(new_username.text, new_password.text)
 
 <MainMenu>:
+    canvas.before:
+        Color:
+            rgba: 224/255, 129/255, 78/255, 0.8
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.after:
+        Line:
+            rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
+            width: 5
     BoxLayout:
         orientation: 'vertical'
+        padding: 40
+        spacing: 10
+        Label:
+            text: 'Main Menu'
+            size_hint_y: None
+            height: '48dp'
+            # Add styling for the title
         Button:
             text: 'View Pages'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'viewPages'
         Button:
             text: 'Create New Page'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'templateSelect'
         Button:
             text: 'View All Images'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'dataScrolling'
         Button:
             text: 'View All Videos'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'dataScrolling'
         Button:
             text: 'View All Notes'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'dataScrolling'
         Button:
             text: 'Logout'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'welcome'
 
 <ViewPages>:
+    canvas.before:
+        Color:
+            rgba: 224/255, 129/255, 78/255, 0.8
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.after:
+        Line:
+            rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
+            width: 5
     BoxLayout:
         orientation: 'vertical'
+        padding: 40
+        spacing: 10
+        Label:
+            text: 'View Pages'
+            size_hint_y: None
+            height: '850dp'
+            # Add styling for the title
         Button:
             text: 'Return'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'mainMenu'
 
 <TemplateSelect>:
+    canvas.before:
+        Color:
+            rgba: 224/255, 129/255, 78/255, 0.8
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.after:
+        Line:
+            rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
+            width: 5
     BoxLayout:
         orientation: 'vertical'
-        Button:
-            text: 'Return'
-            on_press: root.manager.current = 'mainMenu'
+        padding: 40
+        spacing: 10
         Button:
             text: 'Template One'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'pageCreation'
         Button:
             text: 'Template Two'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'pageCreation'
         Button:
             text: 'Template Three'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'pageCreation'
         Button:
             text: 'Template Four'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'pageCreation'
+        Button:
+            text: 'Return'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
+            on_press: root.manager.current = 'mainMenu'
 
 <PageCreation>:
+    canvas.before:
+        Color:
+            rgba: 224/255, 129/255, 78/255, 0.8
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.after:
+        Line:
+            rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
+            width: 5
     BoxLayout:
         orientation: 'vertical'
+        padding: 40
+        spacing: 10
         Button:
-            text: 'Templates'
+            text: 'Back to Templates'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'templateSelect'
         Button:
             text: 'Main Menu'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'mainMenu'
         Button:
             text: 'Select DataBox'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: app.open_place_data_popup()
 
 <PlaceDataPopup@Popup>:
@@ -130,8 +300,30 @@
             on_release: app.save_note(new_note.text)
 
 <DataScrolling>:
+    canvas.before:
+        Color:
+            rgba: 224/255, 129/255, 78/255, 0.8
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    canvas.after:
+        Line:
+            rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
+            width: 5
     BoxLayout:
         orientation: 'vertical'
+        padding: 40
+        spacing: 10
+        Label:
+            text: 'View Saved Data'
+            size_hint_y: None
+            height: '850dp'
+            # Add styling for the title
         Button:
             text: 'Return'
+            size_hint_y: None
+            height: '58dp'
+            size_hint_x: None
+            width: 300
+            pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'mainMenu'

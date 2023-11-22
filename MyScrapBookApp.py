@@ -137,5 +137,6 @@ class MyScrapbookApp(App):
         # For instance, setting a property on that screen to indicate what data to display
         self.root.current = 'dataScrolling'
 
+
 if __name__ == "__main__":
     MyScrapbookApp().run()
