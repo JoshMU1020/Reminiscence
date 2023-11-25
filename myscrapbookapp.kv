@@ -1,7 +1,7 @@
 <WelcomeScreen>:
     canvas.before:
         Color:
-            rgba: 224/255, 129/255, 78/255, 0.8
+            rgba: 133/255, 168/255, 186/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -17,40 +17,64 @@
             text: 'Welcome to Reminiscence!'
             size_hint_y: None
             height: '48dp'
-            # Add styling for the title?
+            font_size: '24sp'
+            color: 1, 1, 1, 1
+            bold: True
+            italic: True
+            halign: 'center'
+            valign: 'middle'
+            text_size: self.width, None
         Button:
             text: 'Create Account'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
+            foreground_color: 1, 1, 1, 1
+            background_color: 133/255, 168/255, 186/255, 1
             pos_hint: {'center_x': 0.5}
             on_press: app.open_create_account_popup()
         TextInput:
             id: username_input
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
+            foreground_color: 1, 1, 1, 1
+            background_color: 133/255, 168/255, 186/255, 1
             pos_hint: {'center_x': 0.5}
+            hint_text_color: 0.9, 0.9, 0.9, 1
             hint_text: 'Enter username'
         TextInput:
             id: password_input
             password: True
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
+            foreground_color: 1, 1, 1, 1
+            background_color: 133/255, 168/255, 186/255, 1
             pos_hint: {'center_x': 0.5}
+            hint_text_color: 0.9, 0.9, 0.9, 1
             hint_text: 'Enter password'
         Button:
             text: 'Login'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
+            foreground_color: 1, 1, 1, 1
+            background_color: 133/255, 168/255, 186/255, 1
             pos_hint: {'center_x': 0.5}
-            on_press: root.manager.current = 'mainMenu'  # Change to 'mainMenu' if credentials are correct
+            on_press: root.login_and_clear()
 
 <CreateAccountPopup@Popup>:
     title: 'Create Account'
@@ -60,19 +84,30 @@
         orientation: 'vertical'
         TextInput:
             id: new_username
-            hint_text: 'New username'
+            font_size: '20sp'
+            bold: True
+            foreground_color: 1, 1, 1, 1
+            background_color: 133/255, 168/255, 186/255, 1
+            hint_text_color: 0.9, 0.9, 0.9, 1
+            hint_text: 'Enter username'
         TextInput:
             id: new_password
+            font_size: '20sp'
+            bold: True
+            foreground_color: 1, 1, 1, 1
+            background_color: 133/255, 168/255, 186/255, 1
+            hint_text_color: 0.9, 0.9, 0.9, 1
             password: True
-            hint_text: 'New password'
+            hint_text: 'Enter password'
         Button:
             text: 'Create'
+            background_color: 133/255, 168/255, 186/255, 1
             on_release: app.create_account(new_username.text, new_password.text)
 
 <MainMenu>:
     canvas.before:
         Color:
-            rgba: 224/255, 129/255, 78/255, 0.8
+            rgba: 133/255, 168/255, 186/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -82,42 +117,55 @@
             width: 5
     BoxLayout:
         orientation: 'vertical'
+        size_hint: None, None
+        height: self.minimum_height
+        width: 300
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         padding: 40
         spacing: 10
         Label:
             text: 'Main Menu'
             size_hint_y: None
             height: '48dp'
-            # Add styling for the title?
+            font_size: '24sp'
+            color: 1, 1, 1, 1
+            bold: True
+            italic: True
+            halign: 'center'
+            valign: 'middle'
+            text_size: self.width, None
         Button:
             text: 'View Pages'
-            size_hint_y: None
+            font_size: '20sp'
+            bold: True
             height: '58dp'
-            size_hint_x: None
+            size_hint_y: None
             width: 300
-            pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'viewPages'
         Button:
             text: 'Create New Page'
-            size_hint_y: None
+            font_size: '20sp'
+            bold: True
             height: '58dp'
-            size_hint_x: None
+            size_hint_y: None
             width: 300
-            pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'pageCreation'
         Button:
             text: 'Logout'
-            size_hint_y: None
+            font_size: '20sp'
+            bold: True
             height: '58dp'
-            size_hint_x: None
+            size_hint_y: None
             width: 300
-            pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'welcome'
 
 <ViewPages>:
     canvas.before:
         Color:
-            rgba: 224/255, 129/255, 78/255, 1
+            rgba: 133/255, 168/255, 186/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -132,13 +180,19 @@
         spacing: 10
         Label:
             id: title_label
-            text: 'Page Title'
+            text: 'View Scrapbook'
             size_hint_y: None
-            height: 50
-            color: 1, 1, 1, 1  # White text
+            height: '48dp'
+            font_size: '24sp'  # Adjust the font size as needed
+            color: 1, 1, 1, 1  # Text color in RGBA (here it's black)
+            bold: True  # Make the text bold
+            italic: True  # Set to True for italic text
+            halign: 'center'  # Horizontally align the text to center
+            valign: 'middle'  # Vertically align the text to middle
+            text_size: self.width, None  # Needed for aligning text
             canvas.before:
                 Color:
-                    rgba: 224/255, 129/255, 78/255, 1
+                    rgba: 133/255, 168/255, 186/255, 1
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -152,18 +206,21 @@
                 height: self.minimum_height
         Button:
             id: bottom_button
-            text: 'Return'
+            text: 'Main Menu'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'mainMenu'
 
 <TemplateSelect>:  # MAY DROP IN FUTURE---------------------------------------------------------------------------------
     canvas.before:
         Color:
-            rgba: 224/255, 129/255, 78/255, 0.8
+            rgba: 133/255, 168/255, 186/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -177,43 +234,58 @@
         spacing: 10
         Button:
             text: 'Template One'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'pageCreation'
         Button:
             text: 'Template Two'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'pageCreation'
         Button:
             text: 'Template Three'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'pageCreation'
         Button:
             text: 'Template Four'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'pageCreation'
         Button:
-            text: 'Return'
+            text: 'Main Menu'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'mainMenu'
 
 <CustomDropZoneLayout@BoxLayout>:
@@ -222,7 +294,7 @@
     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
     canvas.before:
         Color:
-            rgba: 243/255, 170/255, 107/255, 1
+            rgba: 133/255, 168/255, 186/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -233,7 +305,7 @@
 <PageCreation>:
     canvas.before:
         Color:
-            rgba: 224/255, 129/255, 78/255, 0.8
+            rgba: 133/255, 168/255, 186/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -258,26 +330,40 @@
         CustomDropZoneLayout:
             # CustomDropZoneLayout for drop_zone_4
     BoxLayout:
-        orientation: 'vertical'
+        orientation: 'horizontal'
+        size_hint: None, None
+        width: self.minimum_width
+        height: '48dp'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+        spacing: 10
         padding: 10
-        spacing: 5
-        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        Button:
-            text: 'Save Page'
-            size_hint_y: None
-            height: '38dp'
-            size_hint_x: None
-            width: 300
-            pos_hint: {'center_x': 0.5}
-            on_press: app.save_collage(root.ids.collage_layout)
         Button:
             text: 'Main Menu'
-            size_hint_y: None
+            font_size: '20sp'
+            bold: True
+            size_hint: None, None
             height: '38dp'
-            size_hint_x: None
-            width: 300
-            pos_hint: {'center_x': 0.5}
-            on_press: root.manager.current = 'mainMenu'
+            width: 200
+            background_color: 133/255, 168/255, 186/255, 1
+            on_press: root.manager.current = 'mainMenu'; root.clear_drop_zones()
+        Button:
+            text: 'Save Page'
+            font_size: '20sp'
+            bold: True
+            size_hint: None, None
+            height: '38dp'
+            width: 200
+            background_color: 133/255, 168/255, 186/255, 1
+            on_press: app.save_collage(root.ids.collage_layout)
+        Button:
+            text: 'Clear Page'
+            font_size: '20sp'
+            bold: True
+            size_hint: None, None
+            height: '38dp'
+            width: 200
+            background_color: 133/255, 168/255, 186/255, 1
+            on_press: root.clear_drop_zones()
 
 
 <PlaceDataPopup@Popup>:  # MAY DROP IN FUTURE---------------------------------------------------------------------------
@@ -288,16 +374,25 @@
         orientation: 'vertical'
         Button:
             text: 'Image'
+            font_size: '20sp'
+            bold: True
+            background_color: 133/255, 168/255, 186/255, 1
             on_press:
                 root.dismiss()
                 app.switch_to_data_scrolling('image')
         Button:
             text: 'Video'
+            font_size: '20sp'
+            bold: True
+            background_color: 133/255, 168/255, 186/255, 1
             on_press:
                 root.dismiss()
                 app.switch_to_data_scrolling('video')
         Button:
             text: 'Note'
+            font_size: '20sp'
+            bold: True
+            background_color: 133/255, 168/255, 186/255, 1
             on_press:
                 root.dismiss()
                 app.open_create_note_popup()
@@ -310,16 +405,21 @@
         orientation: 'vertical'
         TextInput:
             id: new_note
+            font_size: '20sp'
+            bold: True
+            background_color: 133/255, 168/255, 186/255, 1
             hint_text: 'Enter note'
         Button:
             text: 'Save Note'
-            # Add on_press event to handle note saving
+            font_size: '20sp'
+            bold: True
+            background_color: 133/255, 168/255, 186/255, 1
             on_release: app.save_note(new_note.text)
 
 <DataScrolling>:  # MAY DROP IN FUTURE----------------------------------------------------------------------------------
     canvas.before:
         Color:
-            rgba: 224/255, 129/255, 78/255, 0.8
+            rgba: 133/255, 168/255, 186/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -333,14 +433,18 @@
         spacing: 10
         Label:
             text: 'View Saved Data'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '850dp'
-            # Add styling for the title?
         Button:
-            text: 'Return'
+            text: 'Main Menu'
+            font_size: '20sp'
+            bold: True
             size_hint_y: None
             height: '58dp'
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
+            background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'mainMenu'

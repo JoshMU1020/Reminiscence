@@ -1,16 +1,13 @@
 import os
 import re
+import time
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.factory import Factory
-from kivy.uix.widget import Widget
-from kivy.core.window import Window
 from kivy.uix.floatlayout import FloatLayout
 from kivy.core.window import Window
 from kivy.uix.image import Image
-from kivy.uix.videoplayer import VideoPlayer
 from kivy.uix.textinput import TextInput
-from kivy.uix.gridlayout import GridLayout
 
 
 class DropZone(FloatLayout):
@@ -49,8 +46,12 @@ class DropZone(FloatLayout):
             hint_text='Enter your note here or Drag and Drop image',
             size_hint=(1, 1),
             halign='center',
+            bold=True,
+            font_size='20sp',
             padding_y=(self.height * 0.4, 0),
-            background_color=(243/255, 170/255, 107/255, 1),
+            background_color=(133/255, 168/255, 186/255, 1),
+            hint_text_color=(0.9, 0.9, 0.9, 1),
+            foreground_color=(1, 1, 1, 1),
             pos_hint={'center_x': 0.5, 'center_y': 0.5},
             multiline=True
         )
@@ -62,7 +63,7 @@ class DropZone(FloatLayout):
 
 
 class WelcomeScreen(Screen):
-    '''
+    """
     This screen will contain:
     - Create Account button:
         - If chosen, a popup asking to enter a username and password into two text boxes is shown with confirm button.
@@ -70,12 +71,30 @@ class WelcomeScreen(Screen):
     - Enter password text box.
     - credential confirmation button:
         - If username and password combination exist in credential file, move to MainMenu screen.
-    '''
-    pass  # Your welcome screen layout and logic
+    """
+
+    def login_and_clear(self):
+        # Perform login logic (which you might already have)
+        self.verify_login()
+
+        # Clear the text inputs
+        self.ids.username_input.text = ''
+        self.ids.password_input.text = ''
+
+    def verify_login(self):
+        username = self.ids.username_input.text
+        password = self.ids.password_input.text
+        app = App.get_running_app()
+        if app.verify_credentials(username, password):
+            app.current_user = username  # Set the current user
+            self.manager.current = 'mainMenu'
+        else:
+            print("\nFailed login attempt!")
+            pass
 
 
 class MainMenu(Screen):
-    '''
+    """
     This screen will contain 6 buttons:
     - View pages button:
         - Move to ViewPages screen.
@@ -89,33 +108,40 @@ class MainMenu(Screen):
         - Move to DataScrolling screen.
     - Logout button:
         - return to welcome screen.
-    '''
-    pass  # Main menu layout and logic
+    """
+    def logout(self):
+        app = App.get_running_app()
+        app.current_user = None
+        self.manager.current = 'welcome'
 
 
 class ViewPages(Screen):
-    '''
+    """
     This screen will contain:
     - Return button:
         - Return to MainMenu screen.
     - A scrolling view of all created pages associated with the current user.
-    '''
+    """
     def load_images(self):
-        directory = 'saved_collages'
-        if not os.path.exists(directory):
-            return  # Directory does not exist
+        app = App.get_running_app()
+        if app.current_user:
+            directory = os.path.join('saved_collages', app.current_user)
+            if not os.path.exists(directory):
+                return  # User's directory does not exist
 
-        container = self.ids.pages_container
-        container.clear_widgets()  # Clear existing images if any
-        for filename in sorted(os.listdir(directory)):
-            if filename.endswith(('.png', '.jpg', '.jpeg', '.gif')):
-                file_path = os.path.join(directory, filename)
-                img = Image(source=file_path, size_hint_y=None, height=400)  # Set a fixed height for each image
-                container.add_widget(img)
+            container = self.ids.pages_container
+            container.clear_widgets()  # Clear existing images if any
+            for filename in sorted(os.listdir(directory)):
+                if filename.endswith(('.png', '.jpg', '.jpeg', '.gif')):
+                    file_path = os.path.join(directory, filename)
+                    img = Image(source=file_path, size_hint_y=None, height=400)  # Set a fixed height for each image
+                    container.add_widget(img)
+        else:
+            print("No user is currently logged in.")
 
 
 class TemplateSelect(Screen):  # MAY DROP IN FUTURE---------------------------------------------------------------------
-    '''
+    """
     This screen will contain:
     - Return button:
         - Return to MainMenu screen.
@@ -123,12 +149,12 @@ class TemplateSelect(Screen):  # MAY DROP IN FUTURE-----------------------------
         - clicking on one of the templates both...
             - Moves user to PageCreation screen.
             - Places the selected template onto the PageCreation screen.
-    '''
+    """
     pass  # template menu layout and logic
 
 
 class PageCreation(Screen):
-    '''
+    """
     This screen will contain:
     - Return button:
         - Return to MainMenu screen.
@@ -146,22 +172,27 @@ class PageCreation(Screen):
     - Confirmation button:
         - user confirms that the page is complete.
         - Page is then placed into a page directory associated with the current user to be viewed from ViewPages screen.
-    '''
+    """
     def handle_drop(self, drop_zone, file_path):
         drop_zone.handle_dropped_file(file_path)
 
-    pass  # page creation menu layout and logic
+    def clear_drop_zones(self):
+        app = App.get_running_app()
+        for drop_zone in app.get_drop_zones(self):
+            drop_zone.clear_contents()
+            drop_zone.add_text_input()
 
-''' 
-def __init__(self, **kwargs):
-    super().__init__(**kwargs)
-    self.drop_area = FileDropWidget(size_hint=(0.5, 0.5), pos_hint={'center_x': 0.5, 'center_y': 0.5})
-    self.add_widget(self.drop_area)
-    '''
+    def save_current_collage(self):
+        filename = self.generate_collage_filename()
+        App.get_running_app().save_collage(self.ids.collage_layout, filename)
+
+    def generate_collage_filename(self):
+        # Generate a unique filename, e.g., based on the current time
+        return f"collage_{int(time.time())}.png"
 
 
 class DataScrolling(Screen):  # MAY DROP IN FUTURE----------------------------------------------------------------------
-    '''
+    """
     This screen will contain:
     - Return button:
         - Return to MainMenu screen.
@@ -172,13 +203,14 @@ class DataScrolling(Screen):  # MAY DROP IN FUTURE------------------------------
             - This screen shows a scrolling bar of all videos in the video directory associated with the current user.
         - If button pressed was "See all images":
             - This screen shows a scrolling bar of all notes in the note directory associated with the current user.
-    '''
+    """
     pass  # Data scrolling menu layout and logic
 
 
 class MyScrapbookApp(App):
     # A list to store the saved pages
     saved_pages = []
+    current_user = None
 
     def build(self):
         sm = ScreenManager()
@@ -188,7 +220,6 @@ class MyScrapbookApp(App):
         sm.add_widget(TemplateSelect(name='templateSelect'))
         sm.add_widget(PageCreation(name='pageCreation'))
         sm.add_widget(DataScrolling(name='dataScrolling'))
-        # ... setup screens and drop zones ...
         Window.bind(on_drop_file=self.on_file_drop)
         return sm
 
@@ -197,10 +228,43 @@ class MyScrapbookApp(App):
         self.create_account_popup.open()
 
     def create_account(self, username, password):
-        # Logic to create a new account
-        # Save the username and password to a file or database
-        print("Creating account with...\nUsername:", username, "\nPassword:", password)
-        self.create_account_popup.dismiss()
+        username_input = self.create_account_popup.ids.new_username
+        username_input.hint_text = 'Enter username'
+        if not username or not password:
+            print("Account Creation Failed")
+            self.create_account_popup.ids.new_username.text = ''
+            self.create_account_popup.ids.new_password.text = ''
+            return
+        if self.username_exists(username):
+            print("Username already exists")
+            if hasattr(self, 'create_account_popup'):
+                self.create_account_popup.ids.new_username.text = ''
+                self.create_account_popup.ids.new_password.text = ''
+                username_input = self.create_account_popup.ids.new_username
+                username_input.hint_text = 'Username is taken'
+            # Optionally show a message to the user in the UI
+            return
+        with open("credentials.txt", "a") as file:
+            file.write(f"{username}:{password}\n")
+        print("Account created with Username:", username)
+        user_dir = os.path.join("saved_collages", username)
+        if not os.path.exists(user_dir):
+            os.makedirs(user_dir)
+        if hasattr(self, 'create_account_popup'):
+            self.create_account_popup.ids.new_username.text = ''
+            self.create_account_popup.ids.new_password.text = ''
+            self.create_account_popup.dismiss()
+
+    def username_exists(self, username):
+        try:
+            with open("credentials.txt", "r") as file:
+                for line in file:
+                    stored_username, _ = line.strip().split(':')
+                    if username == stored_username:
+                        return True
+        except FileNotFoundError:
+            pass
+        return False
 
     def open_place_data_popup(self):
         self.place_data_popup = Factory.PlaceDataPopup()
@@ -250,20 +314,35 @@ class MyScrapbookApp(App):
         return highest_num + 1
 
     def save_collage(self, layout):
-        directory = 'saved_collages'
-        if not os.path.exists(directory):
-            os.makedirs(directory)
+        if self.current_user:
+            timestamp = int(time.time())  # Get current timestamp
+            filename = f"collage_{timestamp}.png"  # Create a unique filename
 
-        next_number = self.get_next_collage_number(directory)
-        file_path = os.path.join(directory, f'collage{next_number}.png')
+            user_dir = os.path.join("saved_collages", self.current_user)
+            if not os.path.exists(user_dir):
+                os.makedirs(user_dir)
 
-        layout.export_to_png(file_path)
-        self.clear_all_drop_zones()
-        print(f"Collage saved as: {file_path}")
+            file_path = os.path.join(user_dir, filename)
+            layout.export_to_png(file_path)
+            print(f"Collage saved to {file_path}")
+        else:
+            print("No user is currently logged in.")
 
     def clear_all_drop_zones(self):
         for drop_zone in self.get_drop_zones(self.root):
             drop_zone.clear_contents()
+            drop_zone.add_text_input()  # Re-add TextInput
+
+    def verify_credentials(self, username, password):
+        try:
+            with open("credentials.txt", "r") as file:
+                for line in file:
+                    stored_username, stored_password = line.strip().split(':')
+                    if username == stored_username and password == stored_password:
+                        return True
+        except FileNotFoundError:
+            pass
+        return False
 
 
 if __name__ == "__main__":
