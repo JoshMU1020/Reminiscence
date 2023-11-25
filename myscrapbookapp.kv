@@ -17,7 +17,7 @@
             text: 'Welcome to Reminiscence!'
             size_hint_y: None
             height: '48dp'
-            # Add styling for the title
+            # Add styling for the title?
         Button:
             text: 'Create Account'
             size_hint_y: None
@@ -88,7 +88,7 @@
             text: 'Main Menu'
             size_hint_y: None
             height: '48dp'
-            # Add styling for the title
+            # Add styling for the title?
         Button:
             text: 'View Pages'
             size_hint_y: None
@@ -104,31 +104,7 @@
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
-            on_press: root.manager.current = 'templateSelect'
-        Button:
-            text: 'View All Images'
-            size_hint_y: None
-            height: '58dp'
-            size_hint_x: None
-            width: 300
-            pos_hint: {'center_x': 0.5}
-            on_press: root.manager.current = 'dataScrolling'
-        Button:
-            text: 'View All Videos'
-            size_hint_y: None
-            height: '58dp'
-            size_hint_x: None
-            width: 300
-            pos_hint: {'center_x': 0.5}
-            on_press: root.manager.current = 'dataScrolling'
-        Button:
-            text: 'View All Notes'
-            size_hint_y: None
-            height: '58dp'
-            size_hint_x: None
-            width: 300
-            pos_hint: {'center_x': 0.5}
-            on_press: root.manager.current = 'dataScrolling'
+            on_press: root.manager.current = 'pageCreation'
         Button:
             text: 'Logout'
             size_hint_y: None
@@ -141,7 +117,7 @@
 <ViewPages>:
     canvas.before:
         Color:
-            rgba: 224/255, 129/255, 78/255, 0.8
+            rgba: 224/255, 129/255, 78/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -149,16 +125,33 @@
         Line:
             rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
             width: 5
+    on_enter: root.load_images()
     BoxLayout:
         orientation: 'vertical'
         padding: 40
         spacing: 10
         Label:
-            text: 'View Pages'
+            id: title_label
+            text: 'Page Title'
             size_hint_y: None
-            height: '850dp'
-            # Add styling for the title
+            height: 50
+            color: 1, 1, 1, 1  # White text
+            canvas.before:
+                Color:
+                    rgba: 224/255, 129/255, 78/255, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        ScrollView:
+            size_hint_y: None
+            height: '400dp'
+            BoxLayout:
+                id: pages_container
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
         Button:
+            id: bottom_button
             text: 'Return'
             size_hint_y: None
             height: '58dp'
@@ -167,7 +160,7 @@
             pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'mainMenu'
 
-<TemplateSelect>:
+<TemplateSelect>:  # MAY DROP IN FUTURE---------------------------------------------------------------------------------
     canvas.before:
         Color:
             rgba: 224/255, 129/255, 78/255, 0.8
@@ -223,6 +216,20 @@
             pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'mainMenu'
 
+<CustomDropZoneLayout@BoxLayout>:
+    orientation: 'vertical'
+    size_hint: 0.4, 0.4
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    canvas.before:
+        Color:
+            rgba: 243/255, 170/255, 107/255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    DropZone:
+        id: drop_zone
+        size_hint_y: 0.9
+
 <PageCreation>:
     canvas.before:
         Color:
@@ -234,36 +241,46 @@
         Line:
             rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
             width: 5
+    GridLayout:
+        id: collage_layout
+        cols: 2
+        rows: 2
+        size_hint: 0.8, 0.8
+        pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+        spacing: 5  # Space between children
+        padding: 15  # Padding inside the layout
+        CustomDropZoneLayout:
+            # CustomDropZoneLayout for drop_zone_1
+        CustomDropZoneLayout:
+            # CustomDropZoneLayout for drop_zone_2
+        CustomDropZoneLayout:
+            # CustomDropZoneLayout for drop_zone_3
+        CustomDropZoneLayout:
+            # CustomDropZoneLayout for drop_zone_4
     BoxLayout:
         orientation: 'vertical'
-        padding: 40
-        spacing: 10
+        padding: 10
+        spacing: 5
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         Button:
-            text: 'Back to Templates'
+            text: 'Save Page'
             size_hint_y: None
-            height: '58dp'
+            height: '38dp'
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
-            on_press: root.manager.current = 'templateSelect'
+            on_press: app.save_collage(root.ids.collage_layout)
         Button:
             text: 'Main Menu'
             size_hint_y: None
-            height: '58dp'
+            height: '38dp'
             size_hint_x: None
             width: 300
             pos_hint: {'center_x': 0.5}
             on_press: root.manager.current = 'mainMenu'
-        Button:
-            text: 'Select DataBox'
-            size_hint_y: None
-            height: '58dp'
-            size_hint_x: None
-            width: 300
-            pos_hint: {'center_x': 0.5}
-            on_press: app.open_place_data_popup()
 
-<PlaceDataPopup@Popup>:
+
+<PlaceDataPopup@Popup>:  # MAY DROP IN FUTURE---------------------------------------------------------------------------
     title: 'Place Data'
     size_hint: None, None
     size: 400, 400
@@ -285,7 +302,7 @@
                 root.dismiss()
                 app.open_create_note_popup()
 
-<CreateNotePopup@Popup>:
+<CreateNotePopup@Popup>:  # MAY DROP IN FUTURE--------------------------------------------------------------------------
     title: 'Create note'
     size_hint: None, None
     size: 400, 400
@@ -299,7 +316,7 @@
             # Add on_press event to handle note saving
             on_release: app.save_note(new_note.text)
 
-<DataScrolling>:
+<DataScrolling>:  # MAY DROP IN FUTURE----------------------------------------------------------------------------------
     canvas.before:
         Color:
             rgba: 224/255, 129/255, 78/255, 0.8
@@ -318,7 +335,7 @@
             text: 'View Saved Data'
             size_hint_y: None
             height: '850dp'
-            # Add styling for the title
+            # Add styling for the title?
         Button:
             text: 'Return'
             size_hint_y: None
