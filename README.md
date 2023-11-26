@@ -48,7 +48,7 @@ Reminiscence is an application aimed at providing the elderly with a way to orga
 **Explaination:**
 
 
-## **Software Instilation and Usage:**
+## **Software Installation and Usage:**
 
 
 
