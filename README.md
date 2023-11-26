@@ -34,13 +34,19 @@ Reminiscence is an application aimed at providing the elderly with a way to orga
 ## **Code Structure:**
 - Present a systematic diagram of the code's structure and explanations for easy understanding.
 
-### Class Diagram of Main Code Script:
+**Class Diagram of Main Code Script:**
 
 ![Code UML Diagram](images/472_final_UML.png)
 
-### Class Diagram of Kivy Script:
+**Explaination:**
+
+
+**Class Diagram of Kivy Script:**
 
 ![Kivy UML Diagram](images/472_final_Kivy_UML.png)
+
+**Explaination:**
+
 
 ## **Software Instilation and Usage:**
 
