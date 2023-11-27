@@ -10,26 +10,31 @@ from kivy.uix.image import Image
 from kivy.uix.textinput import TextInput
 
 
+# Defines a custom DropZone class which inherits from FloatLayout
 class DropZone(FloatLayout):
     def __init__(self, **kwargs):
         super(DropZone, self).__init__(**kwargs)
-        self.drop_area = None
-        self.add_text_input()
+        self.drop_area = None  # Initialize drop area
+        self.add_text_input()  # Add a text input field
 
+    # Update drop zone bounds
     def update_drop_zone(self, *args):
         self.drop_area = self.pos + self.size
 
+    # Handle files dropped into DropZones
     def _on_file_drop(self, window, file_path, x, y):
         print(f"File dropped: {file_path}")
         print(f"Drop position: {x}, {y}")
         # Check if the drop is within this widget's bounds
         self.handle_dropped_file(file_path)
 
+    # Handle the dropped file if dropped file is an image
     def handle_dropped_file(self, file_path):
         decoded_file_path = file_path.decode('utf-8')
         if decoded_file_path.endswith(('.png', '.jpg', '.jpeg', '.gif')):
             self.display_image(decoded_file_path)
 
+    # Display the image in the DropZone
     def display_image(self, file_path):
         print(f"Displaying image in DropZone at {self.pos} with size {self.size}")
         self.clear_widgets()
@@ -37,10 +42,13 @@ class DropZone(FloatLayout):
                       size_hint=(1, 1), pos_hint={'center_x': 0.5, 'center_y': 0.5})
         self.add_widget(image)
 
+    # Clear the contents of the DropZone
     def clear_contents(self):
         self.clear_widgets()
 
+    # Add a text input to the DropZone
     def add_text_input(self):
+        # Adds a TextInput widget with specific styling and properties to match rest of application
         self.clear_widgets()
         text_input = TextInput(
             hint_text='Enter your note here or Drag and Drop image',
@@ -58,10 +66,12 @@ class DropZone(FloatLayout):
         text_input.bind(on_text=self.on_text)
         self.add_widget(text_input)
 
+    # Reset the cursor position when textbox changes
     def on_text(self, instance, value):
-        instance.cursor = (0, 0)  # Reset cursor to start
+        instance.cursor = (0, 0)
 
 
+# Define the WelcomeScreen class which inherits from Screen
 class WelcomeScreen(Screen):
     """
     This screen will contain:
@@ -72,12 +82,14 @@ class WelcomeScreen(Screen):
     - credential confirmation button:
         - If username and password combination exist in credential file, move to MainMenu screen.
     """
+    # Clear text inputs upon login attempt
     def login_and_clear(self):
         self.verify_login()
         # Clear the text inputs
         self.ids.username_input.text = ''
         self.ids.password_input.text = ''
 
+    # Verify login credentials
     def verify_login(self):
         username = self.ids.username_input.text
         password = self.ids.password_input.text
@@ -90,6 +102,7 @@ class WelcomeScreen(Screen):
             pass
 
 
+# Define the MainMenu class, inheriting from Screen
 class MainMenu(Screen):
     """
     This screen will contain 6 buttons:
@@ -100,12 +113,14 @@ class MainMenu(Screen):
     - Logout button:
         - return to welcome screen.
     """
+    # Logout function
     def logout(self):
         app = App.get_running_app()
         app.current_user = None
         self.manager.current = 'welcome'
 
 
+# Define the ViewPages class, inheriting from Screen
 class ViewPages(Screen):
     """
     This screen will contain:
@@ -113,6 +128,7 @@ class ViewPages(Screen):
         - Return to MainMenu screen.
     - A scrolling view of all created pages associated with the current user.
     """
+    # Load images from the user's directory
     def load_images(self):
         app = App.get_running_app()
         if app.current_user:
@@ -131,6 +147,7 @@ class ViewPages(Screen):
             print("No user is currently logged in.")
 
 
+# Define the PageCreation class, inheriting from Screen
 class PageCreation(Screen):
     """
     This screen will contain:
@@ -145,27 +162,33 @@ class PageCreation(Screen):
         - user confirms that the page is complete.
         - Page is then placed into a page directory associated with the current user to be viewed from ViewPages screen.
     """
+    # Handle file drops into the drop zone
     def handle_drop(self, drop_zone, file_path):
         drop_zone.handle_dropped_file(file_path)
 
+    # Clear contents of all drop zones
     def clear_drop_zones(self):
         app = App.get_running_app()
         for drop_zone in app.get_drop_zones(self):
             drop_zone.clear_contents()
             drop_zone.add_text_input()
 
+    # Save the current collage
     def save_current_collage(self):
         filename = self.generate_collage_filename()
         App.get_running_app().save_collage(self.ids.collage_layout, filename)
 
+    # Generate a unique filename for the collage based on time
     def generate_collage_filename(self):
         # Generate a unique filename based on the current time
         return f"collage_{int(time.time())}.png"
 
 
+# Defines the MyScrapbookApp class which inherits from App
 class MyScrapbookApp(App):
-    current_user = None
+    current_user = None  # initializes Current user variable
 
+    # Build the app with a screen manager and adds screens
     def build(self):
         sm = ScreenManager()
         sm.add_widget(WelcomeScreen(name='welcome'))
@@ -175,11 +198,14 @@ class MyScrapbookApp(App):
         Window.bind(on_drop_file=self.on_file_drop)
         return sm
 
+    # Open the popup for creating a new account
     def open_create_account_popup(self):
         self.create_account_popup = Factory.CreateAccountPopup()
         self.create_account_popup.open()
 
+    # Create a new account with the given username and password
     def create_account(self, username, password):
+        # Handles account creation logic, including validation and file handling
         username_input = self.create_account_popup.ids.new_username
         username_input.hint_text = 'Enter username'
         if not username or not password:
@@ -207,6 +233,7 @@ class MyScrapbookApp(App):
             self.create_account_popup.ids.new_password.text = ''
             self.create_account_popup.dismiss()
 
+    # Check if a username already exists in the credentials file
     def username_exists(self, username):
         try:
             with open("credentials.txt", "r") as file:
@@ -218,6 +245,7 @@ class MyScrapbookApp(App):
             pass
         return False
 
+    # Handle file drop events for the entire application
     def on_file_drop(self, window, file_path, x, y):
         print(f"File dropped at global coordinates: {x}, {y}")
         y = Window.height - y
@@ -227,6 +255,7 @@ class MyScrapbookApp(App):
                 drop_zone._on_file_drop(window, file_path, x, y)
                 return
 
+    # Retrieve all DropZone instances within the application
     def get_drop_zones(self, widget):
         drop_zones = []
         if isinstance(widget, DropZone):
@@ -237,6 +266,7 @@ class MyScrapbookApp(App):
                 drop_zones.extend(self.get_drop_zones(child))
         return drop_zones
 
+    # Generate a filename for saving a collage based on a timestamp
     def get_next_collage_number(self, directory):
         highest_num = 0
         for filename in os.listdir(directory):
@@ -246,6 +276,7 @@ class MyScrapbookApp(App):
                 highest_num = max(highest_num, num)
         return highest_num + 1
 
+    # Save the current page collage layout as a PNG file
     def save_collage(self, layout):
         if self.current_user:
             timestamp = int(time.time())  # Get current timestamp
@@ -261,11 +292,13 @@ class MyScrapbookApp(App):
         else:
             print("No user is currently logged in.")
 
+    # Clear all contents from DropZones
     def clear_all_drop_zones(self):
         for drop_zone in self.get_drop_zones(self.root):
             drop_zone.clear_contents()
             drop_zone.add_text_input()  # Re-add TextInput
 
+    # Verify user credentials for login
     def verify_credentials(self, username, password):
         try:
             with open("credentials.txt", "r") as file:
@@ -278,5 +311,6 @@ class MyScrapbookApp(App):
         return False
 
 
+# Runs the MyScrapbookApp application
 if __name__ == "__main__":
     MyScrapbookApp().run()
