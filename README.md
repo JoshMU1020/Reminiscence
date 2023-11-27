@@ -171,5 +171,28 @@ Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jb
 
 ## **Project Discussion and Conclusion:**
 
-***Insert concluding discussion to the project's development. Topics include project issues, limitations, and how course learning was involved***
+This project's aim was to develop a software application designed to bring happiness to the elderly by allowing them to create and view digital collages. Despite our ambitious goals, we faced several challenges and limitations during the development process. 
 
+Looking back at this completed project, there were quite a few features and class-related concepts that we wanted to incorporate that we were ultimately unable to. In the initial mockup of the software, we wanted to allow users to drag and drop videos or audio files alongside images and written notes.
+
+In terms of class-related concepts, It was difficult to come up with a way to bring concepts related to operating systems into an application described as software that will bring the elderly happiness. we attempted to incorporate concepts related to file management, threading, or security, however, certain issues limited the amount of these concepts we were able to incorporate. 
+
+Successfully implemented features include using Python's OS library to allow users to drag and drop images into a dedicated internal directory. This directory system, which organizes files into user-specific sub-directories, ensures that users can view only their collages, enhancing the user experience by maintaining a personalized and uncluttered interface.
+
+**Project Limitations:**
+
+Major limitations we encountered include integrating video and audio files into the collages. Initially envisioned as a key feature, technical and time constraints led us to focus on note and image-based collages. Consequently, we decided to save the collages as PNG files, limiting the inclusion of interactive media like audio and video. 
+
+Aside from this, we also had issues with integrating concepts of threading into the application. We reasoned that while the Kivy library handled the visual aspects of the GUI, our script could use threading whenever file management was involved to limit any possible issues related to the program stalling when those file-related background tasks were running. While this made sense to us at the time of conception, in practice, we came across errors from the Kivy library telling us that if any action taken related to a Kivy widget was requested by another thread then the request would be refused due to the nature of the single-threaded GUI frameworks that Kivy uses. As every aspect of our application relied on communication between the main script and Kivy widgets including the movement of files from one widget to another, threading was not possible to implement in a practical fashion.
+
+**Class Concepts Application:**
+
+The project provided us with practical experience in file management and an understanding of threading in application development. We planned to use threading to manage file operations in the background but faced compatibility issues with Kivy's single-threaded GUI framework. This experience highlighted the intricacies and limitations of integrating different systems and technologies in software development. 
+
+**Privacy Features:**
+
+An honorable mention of a class-related concept we tried to implement into our software was to integrate some level of privacy when it comes to viewing user-created page collages. By creating a user-specific collage viewing system, we ensured a certain level of privacy, although the security aspect was not fully developed. This feature could be enhanced in future iterations by implementing secure login mechanisms and encrypted storage of user credentials.
+
+**Conclusion:**
+
+Overall, this project was a valuable learning experience that allowed us to apply our course knowledge in a practical setting. It challenged us to find creative solutions and adapt our strategies in the face of technical limitations. The insights gained from this project will undoubtedly be beneficial in our future endeavors in software development.
