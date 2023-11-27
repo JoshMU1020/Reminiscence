@@ -1,7 +1,9 @@
+# WelcomeScreen: The first screen presented to the user
 <WelcomeScreen>:
+    # Set up the screen's background color and border
     canvas.before:
         Color:
-            rgba: 133/255, 168/255, 186/255, 1
+            rgba: 133/255, 168/255, 186/255, 1 # Background color
         Rectangle:
             pos: self.pos
             size: self.size
@@ -9,12 +11,15 @@
         Line:
             rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
             width: 5
+    # Layout for arranging widgets vertically
     BoxLayout:
         orientation: 'vertical'
-        padding: 80
-        spacing: 10
+        padding: 80 # Space around the box
+        spacing: 10 # Space between children
+        # Text label for welcome screen title
         Label:
             text: 'Welcome to Reminiscence!'
+            # Styling for the title
             size_hint_y: None
             height: '48dp'
             font_size: '24sp'
@@ -24,8 +29,10 @@
             halign: 'center'
             valign: 'middle'
             text_size: self.width, None
+        # Button to open the create account popup
         Button:
             text: 'Create Account'
+            # Button styling
             font_size: '20sp'
             bold: True
             size_hint_y: None
@@ -36,8 +43,10 @@
             background_color: 133/255, 168/255, 186/255, 1
             pos_hint: {'center_x': 0.5}
             on_press: app.open_create_account_popup()
+        # Text input for username
         TextInput:
             id: username_input
+            # Styling for the text input
             font_size: '20sp'
             bold: True
             size_hint_y: None
@@ -49,8 +58,10 @@
             pos_hint: {'center_x': 0.5}
             hint_text_color: 0.9, 0.9, 0.9, 1
             hint_text: 'Enter username'
+        # Text input for password
         TextInput:
             id: password_input
+            # Similar styling as username input, but for password
             password: True
             font_size: '20sp'
             bold: True
@@ -63,8 +74,10 @@
             pos_hint: {'center_x': 0.5}
             hint_text_color: 0.9, 0.9, 0.9, 1
             hint_text: 'Enter password'
+        # Login button
         Button:
             text: 'Login'
+            # Button styling
             font_size: '20sp'
             bold: True
             size_hint_y: None
@@ -76,22 +89,27 @@
             pos_hint: {'center_x': 0.5}
             on_press: root.login_and_clear()
 
+# Popup window for creating a new account
 <CreateAccountPopup@Popup>:
     title: 'Create Account'
     size_hint: None, None
     size: 400, 400
     BoxLayout:
         orientation: 'vertical'
+        # Text input for new username
         TextInput:
             id: new_username
+            # Styling for the text input
             font_size: '20sp'
             bold: True
             foreground_color: 1, 1, 1, 1
             background_color: 133/255, 168/255, 186/255, 1
             hint_text_color: 0.9, 0.9, 0.9, 1
             hint_text: 'Enter username'
+        # Text input for new password
         TextInput:
             id: new_password
+            # Similar styling as new username input, but for password
             font_size: '20sp'
             bold: True
             foreground_color: 1, 1, 1, 1
@@ -99,12 +117,15 @@
             hint_text_color: 0.9, 0.9, 0.9, 1
             password: True
             hint_text: 'Enter password'
+        # Button to create account
         Button:
             text: 'Create'
             background_color: 133/255, 168/255, 186/255, 1
             on_release: app.create_account(new_username.text, new_password.text)
 
+# Layout and styling for the MainMenu screen
 <MainMenu>:
+    # Set up the screen's background color and border
     canvas.before:
         Color:
             rgba: 133/255, 168/255, 186/255, 1
@@ -123,6 +144,7 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         padding: 40
         spacing: 10
+        # Text label for main menu title
         Label:
             text: 'Main Menu'
             size_hint_y: None
@@ -134,6 +156,7 @@
             halign: 'center'
             valign: 'middle'
             text_size: self.width, None
+        # Button to view created pages
         Button:
             text: 'View Pages'
             font_size: '20sp'
@@ -143,6 +166,7 @@
             width: 300
             background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'viewPages'
+        # Button to create a new page
         Button:
             text: 'Create New Page'
             font_size: '20sp'
@@ -152,6 +176,7 @@
             width: 300
             background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'pageCreation'
+        # Button to logout and return to login screen
         Button:
             text: 'Logout'
             font_size: '20sp'
@@ -162,7 +187,9 @@
             background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'welcome'
 
+# Layout and styling for the page viewing screen
 <ViewPages>:
+    # Set up the screen's background color and border
     canvas.before:
         Color:
             rgba: 133/255, 168/255, 186/255, 1
@@ -178,24 +205,26 @@
         orientation: 'vertical'
         padding: 40
         spacing: 10
+        # Text label for page viewing title
         Label:
             id: title_label
             text: 'View Scrapbook'
             size_hint_y: None
             height: '48dp'
-            font_size: '24sp'  # Adjust the font size as needed
-            color: 1, 1, 1, 1  # Text color in RGBA (here it's black)
-            bold: True  # Make the text bold
-            italic: True  # Set to True for italic text
-            halign: 'center'  # Horizontally align the text to center
-            valign: 'middle'  # Vertically align the text to middle
-            text_size: self.width, None  # Needed for aligning text
+            font_size: '24sp'
+            color: 1, 1, 1, 1
+            bold: True
+            italic: True
+            halign: 'center'
+            valign: 'middle'
+            text_size: self.width, None
             canvas.before:
                 Color:
                     rgba: 133/255, 168/255, 186/255, 1
                 Rectangle:
                     pos: self.pos
                     size: self.size
+        # Scroll box for scrolling through created page collages
         ScrollView:
             size_hint_y: None
             height: '400dp'
@@ -204,6 +233,7 @@
                 orientation: 'vertical'
                 size_hint_y: None
                 height: self.minimum_height
+        # Button to return to main menu
         Button:
             id: bottom_button
             text: 'Main Menu'
@@ -217,7 +247,9 @@
             background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'mainMenu'
 
+# Custom BoxLayout for a DropZone
 <CustomDropZoneLayout@BoxLayout>:
+    # Set up the drop zone's background color and border
     orientation: 'vertical'
     size_hint: 0.4, 0.4
     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -231,7 +263,9 @@
         id: drop_zone
         size_hint_y: 0.9
 
+# Layout and styling for the page creation screen
 <PageCreation>:
+    # Set up the screen's background color and border
     canvas.before:
         Color:
             rgba: 133/255, 168/255, 186/255, 1
@@ -242,6 +276,7 @@
         Line:
             rectangle: self.x + 1, self.y + 1, self.width - 2, self.height - 2
             width: 5
+    # 2 by 2 table to hold the 4 drop zones
     GridLayout:
         id: collage_layout
         cols: 2
@@ -266,6 +301,7 @@
         pos_hint: {'center_x': 0.5, 'center_y': 0.1}
         spacing: 10
         padding: 10
+        # Button to return to main menu
         Button:
             text: 'Main Menu'
             font_size: '20sp'
@@ -275,6 +311,7 @@
             width: 200
             background_color: 133/255, 168/255, 186/255, 1
             on_press: root.manager.current = 'mainMenu'; root.clear_drop_zones()
+        # Button to save a page collage as a png to be viewed later
         Button:
             text: 'Save Page'
             font_size: '20sp'
@@ -284,6 +321,7 @@
             width: 200
             background_color: 133/255, 168/255, 186/255, 1
             on_press: app.save_collage(root.ids.collage_layout)
+        # Button to clear a page template
         Button:
             text: 'Clear Page'
             font_size: '20sp'
