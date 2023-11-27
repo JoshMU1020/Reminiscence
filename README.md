@@ -4,8 +4,13 @@
 This project was inspired by our team's CMPSC 472 Operating Systems course. We were tasked as our final project, to create a software application that would provide happiness to the elderly. The contents of this repository are the result of our interpretation of this prompt.
 
 
+## **Project Objectives**
+
+*Insert Objectives of the project*
+
+
 ## **Project Overview:**
-Reminiscence is an application aimed at providing the elderly with a way to organize data related to their past memories. The software is designed to be a scrapbook-like application that would allow users to create notes and upload images to the software which can then be organized into a collage that is then saved to a scroll view of those collages. The application can be used to store, organize, retrieve, and display memories in the form of photos and notes. The software will showcase a friendly user interface for accessing these operations while utilizing our course-related concepts to ensure smooth management of the functions required to manipulate this memory data. Concepts like threading ~~TAKE OUT LATER IF NOT IMLEMENTED~~ and process synchronization can be used to ensure smooth transitions from data like photo scrolling. Other concepts related to file management can be used in managing stored data for quick retrieval. All together, Reminiscence will be able to provide the elderly with a way to construct a virtual scrapbook to create a personalized journey through their past memories.
+Reminiscence is an application aimed at providing the elderly with a way to organize data related to their past memories. The software is designed to be a scrapbook-like application that would allow users to create notes and upload images to the software which can then be organized into a collage that is then saved to a scroll view of those collages. The application can be used to store, organize, retrieve, and display memories in the form of photos and notes. The software will showcase a friendly user interface for accessing these operations while utilizing our course-related concepts to ensure smooth management of the functions required to manipulate this memory data. Concepts like those related to file management can be used in managing stored data for quick retrieval. All together, Reminiscence will be able to provide the elderly with a way to construct a virtual scrapbook to create a personalized journey through their past memories.
 
 
 ## **Software Features:**
@@ -28,7 +33,6 @@ Reminiscence is an application aimed at providing the elderly with a way to orga
 
 **File Manuvering and Storage:** 
 - Python OS Module:
-- Python Threading Module ~~TAKE OUT LATER IF NOT IMLEMENTED~~
 
 
 ## **Code Structure:**
@@ -40,6 +44,8 @@ Reminiscence is an application aimed at providing the elderly with a way to orga
 
 **Explaination:**
 
+*Insert explaination of how to navagate the class diagram*
+
 
 **Class Diagram of Kivy Script:**
 
@@ -47,15 +53,20 @@ Reminiscence is an application aimed at providing the elderly with a way to orga
 
 **Explaination:**
 
+*Insert explaination of how to navagate the Kivy diagram*
+
 
 ## **Software Installation and Usage:**
 
+*Insert image-supported explaination of how to download and launch the software*
 
 
 ## **Software Functionality Testing:**
 
+*Insert image-supported explaination of how to navagate the software*
 
 
-## **Project Disscussion and Conclusion:**
+## **Project Discussion and Conclusion:**
 
+*Insert concluding discussion to the project's development*
 
