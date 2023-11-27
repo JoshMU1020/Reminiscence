@@ -154,8 +154,6 @@ This structure is used to provide a clear and user-friendly interface, with each
 
 ## **Software Installation and Usage:**
 
-***Insert image-supported explaination of how to download and launch the software***
-
 The steps to install and run the Reminiscence application are as follows:
 
 First, go to the link below to download a zip folder of the application.
@@ -164,6 +162,7 @@ Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jb
 
 (**NOTE:** Due to the large size of the application dependency folder which is approximatly 1.44 GB zipped, uploading the application folder is not easily done in GitHub. This is why a OneDrive link is used instead.)
 
+***Insert image-supported explaination of how to download and launch the software***
 
 ## **Software Functionality Testing:**
 
@@ -172,5 +171,5 @@ Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jb
 
 ## **Project Discussion and Conclusion:**
 
-***Insert concluding discussion to the project's development***
+***Insert concluding discussion to the project's development. Topics include project issues, limitations, and how course learning was involved***
 
