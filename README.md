@@ -45,7 +45,7 @@ Reminiscence is an application aimed at providing the elderly with a way to orga
 **Explaination:**
 
 *Insert explaination of how to navagate the class diagram*
-
+The class diagram
 
 **Class Diagram of Kivy Script:**
 
