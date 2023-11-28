@@ -201,6 +201,12 @@ Here are a couple of examples of completed pages:
 ![Page Example One](images/test_7.png)
 ![Page Example Two](images/test_8.png)
 
+Stock image examples provided by pexels.com:
+- Photo by Andrea Piacquadio: https://www.pexels.com/photo/two-adult-women-beside-each-other-3768114/
+- Photo by Andrea Piacquadio: https://www.pexels.com/photo/cheerful-senior-mother-and-adult-daughter-using-smartphone-together-3791664/
+- Photo by Agung Pandit Wiguna: https://www.pexels.com/photo/man-standing-beside-his-wife-teaching-their-child-how-to-ride-bicycle-1128318/
+- Photo by Agung Pandit Wiguna: https://www.pexels.com/photo/a-man-and-a-woman-assisting-a-girl-while-jumping-1128317/
+
 After this, the user can navigate back to the main menu and select the "View Pages" button to see their created collages. Note that the scroll function only works if there is not enough room to fit all of the user's collages on the same screen. This is why two example pages were added so we can see this feature in action.
 
 ![View Page Start](images/test_9.png)
