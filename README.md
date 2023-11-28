@@ -162,9 +162,23 @@ Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jb
 
 (**NOTE:** Due to the large size of the application dependency folder which is approximatly 1.44 GB zipped, uploading the application folder is not easily done in GitHub. This is why a OneDrive link is used instead.)
 
-***Insert image-supported explaination of how to download and launch the software***
+Once downloaded, unzip the Reminiscence folder and open it. Inside you will find four items including the Scrapbook application executable file, a non-encripted credentials text file, a folder containing all generated collages, and a dependencies folder containing all file dependencies for the python-kivy application.
+
+![Application Folder Contents](images/insta_1.png)
+
+From here, double click the Reminiscence executable to start the application. A logging command prompt will open along with the application.
+
+![Application and Logger](images/insta_2.png)
+
+From here, the application is live and ready to be used to create collages!
 
 ## **Software Functionality Testing:**
+
+Now that the software is open, it's time to test out its features! You can begin by creating an account with the "Create Account" button. As can be seen below, clicking the "Create Account" button brings up a popup menu that prompts the user to create their account credentials.
+
+![Account Creation](images/test_1.png)
+
+
 
 ***Insert image-supported explaination of how to navagate the software***
 
