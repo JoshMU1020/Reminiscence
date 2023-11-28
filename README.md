@@ -1,14 +1,14 @@
 # **Reminiscence**
 
-## **Insperation:**
-This project was inspired by our team's CMPSC 472 Operating Systems course. We were tasked as our final project, to create a software application that would provide happiness to the elderly. The contents of this repository are the result of our interpretation of this prompt.
+## **Inspiration:**
+This project was inspired by our team's CMPSC 472 Operating Systems course. We were tasked as our final project to create a software application that would provide happiness to the elderly. The contents of this repository are the result of our interpretation of this prompt.
 
 
 ## **Project Objectives**
 
-The objectives of this project are to as previously stated, create an application that utilizes some aspects of the information presented during our CMPSC 472 class to construct software that could provide some sense of happiness to the elderly.
+The objectives of this project are to create an application that utilizes some aspects of the information presented during our CMPSC 472 class to construct software that could provide some sense of happiness to the elderly.
 
-Through the completion of this task, our personal goals are to gain experience in
+Through the completion of this task, our personal goals include gaining experience in
 - Critical and creative thinking when designing our software to enhance happiness.
 
 - Developing a user-friendly interface: This application should be easy to use visually friendly and appealing. Harsh colors or complicated layouts would make the application undesirable to the elderly.
@@ -19,7 +19,7 @@ Through the completion of this task, our personal goals are to gain experience i
 
 
 ## **Project Overview:**
-Reminiscence is a Windows application aimed at providing the elderly with a way to organize data related to their past memories. The software is designed to be a scrapbook-like application that would allow users to create notes and upload images to the software which can then be organized into a collage that is then saved to a scroll view of those collages. The application can be used to store, organize, retrieve, and display memories in the form of photos and notes. The software will showcase a friendly user interface for accessing these operations while utilizing our course-related concepts to ensure smooth management of the functions required to manipulate this memory data. Concepts like those related to file management can be used in managing stored data for quick retrieval. All together, Reminiscence will be able to provide the elderly with a way to construct a virtual scrapbook to create a personalized journey through their past memories.
+Reminiscence is a Windows application aimed at providing the elderly with a way to organize data related to their past memories. The software is designed to be a scrapbook-like application that would allow users to create notes and upload images to the software which can then be organized into a collage that is then saved to a scroll view of those collages. The application can be used to store, organize, retrieve, and display memories in the form of photos and notes. The software will showcase a friendly user interface for accessing these operations while utilizing our course-related concepts to ensure smooth management of the functions required to manipulate this memory data. Concepts like those related to file management can be used in managing stored data for quick retrieval. Altogether, Reminiscence will be able to provide the elderly with a way to construct a virtual scrapbook to create a personalized journey through their past memories.
 
 
 ## **Software Features:**
@@ -40,7 +40,7 @@ Reminiscence is a Windows application aimed at providing the elderly with a way 
 - Kivy’s Image Widget: Supports features related to manipulation of images.
 - Kivy’s DropFile Widget: Supports drag and drop of files into GUI for a more GUI-friendly environment.
 
-**File Manuvering and Storage:** 
+**File Maneuvering and Storage:** 
 - Python OS Module: Handles the copying, creation, and managment of files and folders related to each user's data.
 
 
@@ -51,9 +51,9 @@ Reminiscence is a Windows application aimed at providing the elderly with a way 
 
 ![Code UML Diagram](images/472_final_UML.png)
 
-**Explaination:**
+**Explanation:**
 
-The class UML diagram depicts a visual explaination of the main application of the MyScrapbookApp python script. The role of this script is the be the entry point of the application. It inherits from Kivy's Screen Manager class to manage all screens who are initiated by the build function.
+The class UML diagram depicts a visual explanation of the main application of the MyScrapbookApp python script. The role of this script is the be the entry point of the application. It inherits from Kivy's Screen Manager class to manage all screens who are initiated by the build function.
 
 When the program starts, the MyScrapbookApp() class initializes the ScreenManager and adds various screens to it including the welcome, mainMenu, viewPages, and PageCreation screens. This class also manages global functions related to some of the screens.
 
