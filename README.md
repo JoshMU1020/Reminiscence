@@ -19,7 +19,7 @@ Through the completion of this task, our personal goals are to gain experience i
 
 
 ## **Project Overview:**
-Reminiscence is an application aimed at providing the elderly with a way to organize data related to their past memories. The software is designed to be a scrapbook-like application that would allow users to create notes and upload images to the software which can then be organized into a collage that is then saved to a scroll view of those collages. The application can be used to store, organize, retrieve, and display memories in the form of photos and notes. The software will showcase a friendly user interface for accessing these operations while utilizing our course-related concepts to ensure smooth management of the functions required to manipulate this memory data. Concepts like those related to file management can be used in managing stored data for quick retrieval. All together, Reminiscence will be able to provide the elderly with a way to construct a virtual scrapbook to create a personalized journey through their past memories.
+Reminiscence is a Windows application aimed at providing the elderly with a way to organize data related to their past memories. The software is designed to be a scrapbook-like application that would allow users to create notes and upload images to the software which can then be organized into a collage that is then saved to a scroll view of those collages. The application can be used to store, organize, retrieve, and display memories in the form of photos and notes. The software will showcase a friendly user interface for accessing these operations while utilizing our course-related concepts to ensure smooth management of the functions required to manipulate this memory data. Concepts like those related to file management can be used in managing stored data for quick retrieval. All together, Reminiscence will be able to provide the elderly with a way to construct a virtual scrapbook to create a personalized journey through their past memories.
 
 
 ## **Software Features:**
@@ -166,7 +166,7 @@ This structure is used to provide a clear and user-friendly interface, with each
 
 The steps to install and run the Reminiscence application are as follows:
 
-First, go to the link below to download a zip folder of the application.
+First, using a Windows machine, go to the link below to download a zip folder of the application.
 
 Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jbm6204_psu_edu/EfE1v7pNPkxEjaFgi5lu1CcB23YT30atEY45MBmGSPkESA?e=kVxEDw 
 
