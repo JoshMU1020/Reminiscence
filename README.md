@@ -158,7 +158,7 @@ The steps to install and run the Reminiscence application are as follows:
 
 First, go to the link below to download a zip folder of the application.
 
-Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jbm6204_psu_edu/EROpwacMbVxEmP4QXSQmtw4Bpt2xzA22m_J_kXcwXvTAyQ?e=waphSF 
+Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jbm6204_psu_edu/EcsvYFxpnT5AiiDZdXyLCZcBGoOW7qbBdQcPGwOATywYlw?e=4mI96z 
 
 (**NOTE:** Due to the large size of the application dependency folder which is approximatly 1.44 GB zipped, uploading the application folder is not easily done in GitHub. This is why a OneDrive link is used instead.)
 
@@ -174,14 +174,46 @@ From here, the application is live and ready to be used to create collages!
 
 ## **Software Functionality Testing:**
 
-Now that the software is open, it's time to test out its features! You can begin by creating an account with the "Create Account" button. As can be seen below, clicking the "Create Account" button brings up a popup menu that prompts the user to create their account credentials.
+Now that the software is open, it's time to test out its features! You can begin by creating an account with the "Create Account" button. As can be seen below, clicking the "Create Account" button brings up a popup menu that prompts the user to create their desired account credentials before pressing "Create" to confirm the account.
 
 ![Account Creation](images/test_1.png)
 
+![Account Created](images/test_2.png)
 
+After creating an account, the user can then enter those credentials into the main username and password textboxes before pressing the "Login: button to enter the application.
 
-***Insert image-supported explaination of how to navagate the software***
+![Account Login](images/test_3.png)
 
+After sucessfully logging in, the user will find themselfs at the main menu. From here they can choose between three buttons. 
+
+![Main Menu](images/test_4.png)
+
+The first button is called "View Pages." When pressed, this takes the user to a view of all their created page collages with the feature of being able to scroll through the created collages with their mouse or scroll wheel. Since the user has not created any collages yet, this page is empty. The user can press "Main Menu" to return to that screen.
+
+![View Pages Empty](images/test_5.png)
+
+The second button is called "Create New Page" which as the name suggests, allows the user to create a new page collage. This screen is set up with a 2 by 2 grid of boxes that contain features to allow the user to either enter a note into a box of their choice or enter an image to take up the box space. This screen also contains three buttons of its own. The first is to return to the main menu. The second is the save the page collage to the "View Pages" screen. The last button is to clear the page grid back to a blank state.
+
+![Create Page Empty](images/test_6.png)
+
+Here are a couple of examples of completed pages:
+
+![Page Example One](images/test_7.png)
+![Page Example Two](images/test_8.png)
+
+After this, the user can navagate back to the main menu and select the "View Pages" button to see their created collages. Note that the scroll function only works of there is not enough room to fit all of the user's collages in the same screen. This is why two example pages were added so we can see this feature in action.
+
+![View Page Start](images/test_9.png)
+
+![View Page Scroll](images/test_10.png)
+
+From here, if the user is finished with their page viewing, then they can navagate back to the main menu and then press the "Logout" button to return to the login screen. 
+
+![Account Login](images/test_11.png)
+
+The main purpose for the login feature is to allow for different users to see different pages depending on which pages they created. If another user is created and then navagates to the "View Pages" screen, they will not see the other user's collages mixed in with their own. 
+
+This concludes the Reminiscence application demo.
 
 ## **Project Discussion and Conclusion:**
 
