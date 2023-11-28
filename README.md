@@ -207,7 +207,7 @@ Stock image examples provided by pexels.com:
 - Photo by Agung Pandit Wiguna: https://www.pexels.com/photo/man-standing-beside-his-wife-teaching-their-child-how-to-ride-bicycle-1128318/
 - Photo by Agung Pandit Wiguna: https://www.pexels.com/photo/a-man-and-a-woman-assisting-a-girl-while-jumping-1128317/
 
-After this, the user can navigate back to the main menu and select the "View Pages" button to see their created collages. Note that the scroll function only works if there is not enough room to fit all of the user's collages on the same screen. This is why two example pages were added so we can see this feature in action.
+After every created page, the user can press the "Save Page" button to save the collage to their account directory within the application folder. They can then navigate back to the main menu and select the "View Pages" button to see their created collages. Note that the scroll function only works if there is not enough room to fit all of the user's collages on the same screen. This is why two example pages were added so we can see this feature in action.
 
 ![View Page Start](images/test_9.png)
 
