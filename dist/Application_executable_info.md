@@ -1,0 +1,3 @@
+This directory location is where the executable file for our scrapbook application was supposed to be housed. However, in order for the application executable to run, it requires a dependency folder that contains Python and Kivy, thus making the dependency folder quite large, approximately 1.4 GB zipped. Due to GitHub's limited file import size allowances, we are unable to upload the executable alongside its required dependencies. Instead, we opted to host our project executable with the dependency folder on OneDrive which can be accessed and downloaded through the link below.
+
+OneDrive Link to executable file and dependency folder: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jbm6204_psu_edu/EfE1v7pNPkxEjaFgi5lu1CcB23YT30atEY45MBmGSPkESA?e=kVxEDw 
