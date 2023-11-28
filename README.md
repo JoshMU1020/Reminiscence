@@ -172,7 +172,7 @@ Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jb
 
 (**NOTE:** Due to the large size of the application dependency folder which is approximately 1.44 GB zipped, uploading the application folder is not easily done in GitHub. This is why a OneDrive link is used instead.)
 
-Once downloaded, unzip the Reminiscence folder and open it. Inside you will find four items including the Scrapbook application executable file, a non-encrypted credentials text file, a folder containing all generated collages, and a dependencies folder containing all file dependencies for the python-kivy application.
+Once downloaded, unzip the Reminiscence folder and open it. Inside you will find Two items including the Scrapbook application executable file and a dependencies folder containing all file dependencies for the python-kivy application. As the user operates the software, a non-encrypted credentials text file and a folder containing all created collages corresponding to each user will be generated in this folder.
 
 ![Application Folder Contents](images/472_launch_1.png)
 
