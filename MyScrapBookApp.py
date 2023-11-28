@@ -205,42 +205,73 @@ class MyScrapbookApp(App):
 
     # Create a new account with the given username and password
     def create_account(self, username, password):
-        # Handles account creation logic, including validation and file handling
         username_input = self.create_account_popup.ids.new_username
+        password_input = self.create_account_popup.ids.new_password
+        # Reset hint texts
         username_input.hint_text = 'Enter username'
+        password_input.hint_text = 'Enter password'
+        # Basic checks for empty username or password
         if not username or not password:
-            print("Account Creation Failed")
-            self.create_account_popup.ids.new_username.text = ''
-            self.create_account_popup.ids.new_password.text = ''
+            print("Account Creation Failed: Username or password cannot be empty.")
+            username_input.text = ''
+            password_input.text = ''
             return
+        # Check for spaces and ensure single-line text
+        if " " in username or "\n" in username or " " in password or "\n" in password:
+            print("Account Creation Failed: Username and password must not contain spaces and must be single-line.")
+            username_input.text = ''
+            password_input.text = ''
+            username_input.hint_text = 'No spaces allowed'
+            password_input.hint_text = 'No spaces allowed'
+            return
+        # Check if username already exists
         if self.username_exists(username):
             print("Username already exists")
-            if hasattr(self, 'create_account_popup'):
-                self.create_account_popup.ids.new_username.text = ''
-                self.create_account_popup.ids.new_password.text = ''
-                username_input = self.create_account_popup.ids.new_username
-                username_input.hint_text = 'Username is taken'
-            # Optionally show a message to the user in the UI
+            username_input.text = ''
+            password_input.text = ''
+            username_input.hint_text = 'Username is taken'
             return
+        # Saving credentials
         with open("credentials.txt", "a") as file:
             file.write(f"{username}:{password}\n")
         print("Account created with Username:", username)
+        # Create user directory
         user_dir = os.path.join("saved_collages", username)
         if not os.path.exists(user_dir):
             os.makedirs(user_dir)
-        if hasattr(self, 'create_account_popup'):
-            self.create_account_popup.ids.new_username.text = ''
-            self.create_account_popup.ids.new_password.text = ''
-            self.create_account_popup.dismiss()
+        # Dismiss popup and clear texts
+        username_input.text = ''
+        password_input.text = ''
+        self.create_account_popup.dismiss()
 
     # Check if a username already exists in the credentials file
     def username_exists(self, username):
         try:
             with open("credentials.txt", "r") as file:
                 for line in file:
-                    stored_username, _ = line.strip().split(':')
-                    if username == stored_username:
-                        return True
+                    try:
+                        stored_username, _ = line.strip().split(':')
+                        if username == stored_username:
+                            return True
+                    except ValueError:
+                        print("Warning: Invalid format in credentials file")
+                        continue
+        except FileNotFoundError:
+            pass
+        return False
+
+    # Verify user credentials for login
+    def verify_credentials(self, username, password):
+        try:
+            with open("credentials.txt", "r") as file:
+                for line in file:
+                    try:
+                        stored_username, stored_password = line.strip().split(':')
+                        if username == stored_username and password == stored_password:
+                            return True
+                    except ValueError:
+                        print("Warning: Invalid format in credentials file")
+                        continue  # Skip to the next line
         except FileNotFoundError:
             pass
         return False
@@ -297,18 +328,6 @@ class MyScrapbookApp(App):
         for drop_zone in self.get_drop_zones(self.root):
             drop_zone.clear_contents()
             drop_zone.add_text_input()  # Re-add TextInput
-
-    # Verify user credentials for login
-    def verify_credentials(self, username, password):
-        try:
-            with open("credentials.txt", "r") as file:
-                for line in file:
-                    stored_username, stored_password = line.strip().split(':')
-                    if username == stored_username and password == stored_password:
-                        return True
-        except FileNotFoundError:
-            pass
-        return False
 
 
 # Runs the MyScrapbookApp application
