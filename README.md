@@ -6,7 +6,16 @@ This project was inspired by our team's CMPSC 472 Operating Systems course. We w
 
 ## **Project Objectives**
 
-***Insert Objectives of the project***
+The objectives of this project are to as previously stated, create an application that utilizes some aspects of the information presented during our CMPSC 472 class to construct software that could provide some sense of happiness to the elderly.
+
+Through the completion of this task, our personal goals are to gain experience in
+- Critical and creative thinking when designing our software to enhance happiness.
+
+- Developing a user-friendly interface: This application should be easy to use visually friendly and appealing. Harsh colors or complicated layouts would make the application undesirable to the elderly.
+
+- Collaborative coding: Learning to work effectively as a team in co-developing our software project.
+
+- Real-world application development: Applying our skills to create a practical project with real-world use cases that contribute to the well-being of the elderly.
 
 
 ## **Project Overview:**
@@ -32,7 +41,7 @@ Reminiscence is an application aimed at providing the elderly with a way to orga
 - Kivy’s DropFile Widget: Supports drag and drop of files into GUI for a more GUI-friendly environment.
 
 **File Manuvering and Storage:** 
-- Python OS Module:
+- Python OS Module: Handles the copying, creation, and managment of files and folders related to each user's data.
 
 
 ## **Code Structure:**
@@ -152,13 +161,14 @@ Components:
 
 This structure is used to provide a clear and user-friendly interface, with each screen and widget designed to fulfill specific roles within the application, from user authentication to scrapbook creation and navigation. A light blue background with large white text is used to be easy on the eyes in consideration with the potential elderly users.
 
+
 ## **Software Installation and Usage:**
 
 The steps to install and run the Reminiscence application are as follows:
 
 First, go to the link below to download a zip folder of the application.
 
-Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jbm6204_psu_edu/EcsvYFxpnT5AiiDZdXyLCZcBGoOW7qbBdQcPGwOATywYlw?e=4mI96z 
+Application Link: https://pennstateoffice365-my.sharepoint.com/:u:/g/personal/jbm6204_psu_edu/EfE1v7pNPkxEjaFgi5lu1CcB23YT30atEY45MBmGSPkESA?e=kVxEDw 
 
 (**NOTE:** Due to the large size of the application dependency folder which is approximately 1.44 GB zipped, uploading the application folder is not easily done in GitHub. This is why a OneDrive link is used instead.)
 
@@ -171,6 +181,7 @@ From here, double-click the Reminiscence executable to start the application. A 
 ![Application and Logger](images/insta_2.png)
 
 From here, the application is live and ready to be used to create collages!
+
 
 ## **Software Functionality Testing:**
 
@@ -210,7 +221,6 @@ Stock image examples provided by pexels.com:
 After every created page, the user can press the "Save Page" button to save the collage to their account directory within the application folder. They can then navigate back to the main menu and select the "View Pages" button to see their created collages. Note that the scroll function only works if there is not enough room to fit all of the user's collages on the same screen. This is why two example pages were added so we can see this feature in action.
 
 ![View Page Start](images/test_9.png)
-
 ![View Page Scroll](images/test_10.png)
 
 From here, if the user is finished with their page viewing, then they can navigate back to the main menu and then press the "Logout" button to return to the login screen. 
@@ -220,6 +230,7 @@ From here, if the user is finished with their page viewing, then they can naviga
 The main purpose of the login feature is to allow different users to see different pages depending on which pages they create. If another user is created and then navigates to the "View Pages" screen, they will not see the other user's collages mixed in with their own. 
 
 This concludes the Reminiscence application demo.
+
 
 ## **Project Discussion and Conclusion:**
 
