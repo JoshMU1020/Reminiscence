@@ -1,10 +1,17 @@
 # **Reminiscence**
 
+
 ## **Inspiration:**
 This project was inspired by our team's CMPSC 472 Operating Systems course. We were tasked as our final project to create a software application that would provide happiness to the elderly. The contents of this repository are the result of our interpretation of this prompt.
 
 
-## **Project Objectives**
+## **Team Members:**
+
+**JoshMU1020 - Joshua Murillo**
+
+**dweismanEDU - David Weisman**
+
+## **Project Objectives:**
 
 The objectives of this project are to create an application that utilizes some aspects of the information presented during our CMPSC 472 class to construct software that could provide some sense of happiness to the elderly.
 
