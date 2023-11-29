@@ -1,6 +1,17 @@
 # **Reminiscence**
 
 
+## **Repository Contents:**
+
+The following are the main components of our project as viewed from our repository.
+
+| Item | Description |
+| -------- | ------- |
+| Top-Level README | A comprehensive report on our project and its development.  |
+| MyScrapBookApp.py | A Python file containing the main script where the application's internal structure is managed.  |
+| myscrapbookapp.kv | A Kivy file containing the visual structure of the application as seen by the user.  |
+| Reminiscence.spec | A specifications file used by the Pyinstaller packaging tool to generate an executable file of our application along with its dependency folder. |
+
 ## **Inspiration:**
 This project was inspired by our team's CMPSC 472 Operating Systems course. We were tasked as our final project to create a software application that would provide happiness to the elderly. The contents of this repository are the result of our interpretation of this prompt.
 
@@ -10,6 +21,7 @@ This project was inspired by our team's CMPSC 472 Operating Systems course. We w
 **JoshMU1020 - Joshua Murillo**
 
 **dweismanEDU - David Weisman**
+
 
 ## **Project Objectives:**
 
